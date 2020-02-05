@@ -110,8 +110,8 @@ SM_3 = np.array([(rec_pos[0][4],rec_pos[0][5]), (rec_pos[1][4],rec_pos[1][5]),(r
 SM = np.array([SM_1,SM_2,SM_3])
 
 #test position
-number = 50
-r_x = np.linspace(-2*np.pi,2*np.pi,num = number)
+number = 500
+r_x = np.linspace(-10*np.pi,10*np.pi,num = number)
 r_y = 100*np.cos(r_x)
 r_z = 100*np.sin(r_x)
 r = (r_x,r_y,r_z, number)
@@ -133,6 +133,8 @@ for i in I[0]:  #loop to create found positons for each step of test path
 x = np.array(posx)
 y = np.array(posy)
 z = np.array(posz)
+
+#---producing error readouts-------
 
 x_err = 100*(r_x-x)/r_x
 y_err = 100*(r_y-y)/r_y
@@ -158,13 +160,16 @@ for i in x_err:
 
 fig = plt.figure()
 ax = fig.add_subplot(111, projection="3d")
+# ax.set_xlim3d(-2, 2)
+# ax.set_ylim3d(-2, 2)
+# ax.set_zlim3d(-2, 2)
 
 ax.plot3D(SM_1[0],SM_1[1],SM_1[2], linestyle = 'none', marker = 'o') # mark recorders
 ax.plot3D(SM_2[0],SM_2[1],SM_2[2], linestyle = 'none', marker = 'o')
 ax.plot3D(SM_3[0],SM_3[1],SM_3[2], linestyle = 'none', marker = 'o')
 
 ax.plot3D(x,y,z, color = 'r', linestyle = 'none',marker = '.')
-ax.plot3D(r_x,r_y,r_z, 'g')#, linestyle = 'none', marker = '.')#test path
+ax.plot3D(r_x,r_y,r_z, 'g', linestyle = 'none', marker = '.')#test path
 
 fig = plt.figure()
 ax = fig.add_subplot(111, projection = '3d')
